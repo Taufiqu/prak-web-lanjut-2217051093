@@ -1,0 +1,74 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        border: 3px solid #ffcc00; /* Warna kuning di border */
+        background-image: linear-gradient(135deg, #ffcc00 50%, black 50%); /* Warna kuning di background */
+    }
+
+    .profile-pic img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 3px solid black; /* Tambahkan border hitam ke gambar */
+    }
+
+    .info-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* Tambah jarak antar input */
+    }
+
+    input {
+        width: 300px;
+        text-align: center;
+        padding: 12px;
+        border: 2px solid #000; /* Border hitam pada input */
+        border-radius: 8px;
+        background-color: #ffcc00; /* Warna kuning pada input */
+        color: black;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan shadow */
+        transition: all 0.3s ease; /* Efek animasi saat hover */
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #000; /* Tetap border hitam saat fokus */
+        background-color: #fff; /* Warna latar belakang putih saat fokus */
+    }
+
+    input:hover {
+        background-color: #ffeb3b; /* Warna lebih terang saat hover */
+    }
+
+    /* Tambahkan gaya untuk judul */
+    h1 {
+        color: #ffcc00;
+        text-transform: uppercase;
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px black; /* Shadow hitam untuk judul */
+    }
