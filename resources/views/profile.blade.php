@@ -7,19 +7,19 @@
     <title>Profile</title>
 </head>
 <body>
-<div class="container">
+    <div class="container">
         <div class="profile-pic">
         <img src="{{ asset('assets/img/PP.jpeg') }}" alt="Foto Profil">
         </div>
         <div class="info-box">
             <div class="box">
-                <input type="text" id= nama value=" {{ $nama }}" readonly>
+                <input type="text" id= nama value=" {{ $nama }}">
             </div>
             <div class="box">
-                <input type="text" id= kelas value=" {{ $kelas }}" readonly>
+                <input type="text" id= kelas value=" {{ $nama_kelas ?? 'kelas tidak ditemukan' }}">
             </div>
             <div class="box">
-                <input type="text" id= npm value=" {{ $npm }}" readonly>
+                <input type="text" id= npm value=" {{ $npm }}">
             </div>
         </div>
     </div>
