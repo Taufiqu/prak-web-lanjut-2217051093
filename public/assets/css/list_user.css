@@ -1,0 +1,38 @@
+/* Desain untuk tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+/* Header tabel (warna background hitam dan teks kuning) */
+table th {
+    background-color: #000; /* Warna hitam */
+    color: #ffeb3b; /* Warna kuning */
+    padding: 12px 15px;
+}
+
+/* Baris tabel */
+table td {
+    padding: 12px 15px;
+    background-color: #fff; /* Warna putih untuk sel */
+    color: #000; /* Warna teks hitam */
+}
+
+/* Alternatif baris dengan warna background abu-abu */
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Gaya hover untuk baris */
+table tr:hover {
+    background-color: #ffeb3b; /* Warna kuning saat di-hover */
+    color: #000; /* Teks hitam */
+}
+
+/* Border tabel */
+table, th, td {
+    border: 1px solid #000;
+}
