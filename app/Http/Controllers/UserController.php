@@ -10,6 +10,28 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public $userModel;
+    
+    public $kelasModel;
+
+    public function __construct()
+    {
+        $this->userModel = new UserModel();
+        $this->kelasModel = new Kelas();
+    }
+
+    public function index()
+    {
+        $users = $this->userModel->getUser();
+        
+        $data = [
+            'title' => "Create User",
+            'kelas' => $this->userModel->getUser(),
+            'users' => $users,
+        ];
+
+        return view('list_user', $data);
+    }
     public function profile($nama = " ", $kelas = " ", $npm =
     " "){
         $data = [
@@ -23,29 +45,28 @@ class UserController extends Controller
 
     public function create(){
 
-        return view('create_user', [
-            'kelas' => Kelas::all(),
-        ]);  
+        $kelasModel = new Kelas();
+
+        $kelas =$this->kelasModel->getKelas();
+
+        $data = [
+            'kelas' => $kelas,
+            'title' => "Create User",
+        ];
+
+
+        return view('create_user', $data);  
         
     }
 
-    public function store(UserRequest $request){
-        
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
-            'kelas_id' => 'required|exists:kelas,id',
-            'npm' =>'required|string|max:255',
-        ]);  
+    public function store(Request $request){
 
-        $user = UserModel::create($validatedData);
+       $this->userModel->create([
+            'nama' => $request->input('nama'),
+            'npm' => $request->input('npm'),
+            'kelas_id' => $request->input('kelas_id'),
+       ]);
 
-        $user->load('kelas');
-
-        return view('profile', [
-            'nama' => $user->nama,
-            'npm' => $user->npm,
-            'nama_kelas' => $user->kelas->nama_kelas ?? 'Kelas tidak ditemukan',
-
-        ]);
+       return redirect()->to('/user');
     }
 }
