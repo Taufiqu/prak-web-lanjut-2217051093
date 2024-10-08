@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-    <form action="{{ route('user.store') }}" method="POST">
+    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label>Nama</label>
         <input type="text" name="nama" value="">
@@ -26,6 +26,8 @@
             <p class="text-danger">{{$msg}}</p>
         @endforeach
         <br>
+        <input type="file" id="foto" name="foto"><br><br>
+        <label for="foto">foto:</label><br>
         <input type="submit" name="submit" value="Submit">
     </form>
 @endsection
