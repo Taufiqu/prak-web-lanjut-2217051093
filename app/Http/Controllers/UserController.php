@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->userModel->getUser();
+        $users = $this->userModel->with('kelas')->orderBy('id', 'asc')->get(); 
         
         if (!$users) {
             $users = [];
@@ -111,7 +111,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|string|max:255',
             'kelas_id' => 'required|exists:kelas,id',
             'npm' =>'required|string|max:255',
@@ -127,6 +127,7 @@ class UserController extends Controller
 
             // Path relatif untuk disimpan ke database
             $fotoPath = 'upload/img/' . $fileName;
+
       
         } else {
             $fotoPath = null;

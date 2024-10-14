@@ -1,3 +1,8 @@
+body {
+    background-color: #000;
+    background-image: linear-gradient(135deg,  black 50%,#ffcc00 50%);
+}
+
 /* Desain untuk tabel */
 table {
     width: 100%;
@@ -17,8 +22,8 @@ table th {
 /* Baris tabel */
 table td {
     padding: 12px 15px;
-    background-color: #fff; /* Warna putih untuk sel */
-    color: #000; /* Warna teks hitam */
+    background-color: #000; /* Warna hitam */
+    color: #ffeb3b;
 }
 
 /* Alternatif baris dengan warna background abu-abu */
@@ -34,5 +39,65 @@ table tr:hover {
 
 /* Border tabel */
 table, th, td {
-    border: 1px solid #000;
+    border: 1px solid #ffeb3b;
+}
+
+/* Gaya untuk button Tambah Pengguna Baru */
+.btn.btn-primary {
+    background-color: #ffeb3b; /* Warna biru */
+    color: black; /* Warna teks putih */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; /* Menghilangkan underline */
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect untuk button */
+.btn.btn-primary:hover {
+    background-color: black; /* Warna biru lebih gelap saat di-hover */
+    color: #ffeb3b; /* Teks berubah menjadi kuning */
+}
+
+/* Responsive button */
+@media (max-width: 768px) {
+    .btn.btn-primary {
+        width: 100%; /* Full width pada layar yang lebih kecil */
+        text-align: center;
+    }
+}
+
+/* Gaya untuk tombol Edit, Detail, dan Delete */
+.btn.btn-warning,
+.btn.btn-danger {
+    background-color: #ffeb3b; /* Warna kuning */
+    color: #000; /* Teks hitam */
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px; /* Rounded */
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 5px; /* Sedikit spasi antar tombol */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect untuk tombol Edit, Detail, dan Delete */
+.btn.btn-warning:hover,
+.btn.btn-danger:hover {
+    background-color: black; /* Warna biru lebih gelap saat di-hover */
+    color: #ffeb3b; /* Teks berubah menjadi kuning */
+}
+
+/* Responsive buttons */
+@media (max-width: 768px) {
+    .btn.btn-warning,
+    .btn.btn-danger {
+        width: 100%; /* Full width pada layar kecil */
+        text-align: center;
+        margin-bottom: 10px; /* Spasi antar tombol di layar kecil */
+    }
 }
