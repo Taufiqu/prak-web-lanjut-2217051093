@@ -16,8 +16,8 @@
                 <th>Nama</th>
                 <th>NPM</th>
                 <th>Kelas</th>
+                <th>Foto</th>
                 <th>Aksi</th>
-                <th>View</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,12 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->nama }}</td>
                     <td>{{ $user->npm }}</td>
-                    <td>{{ $user->nama_kelas }}</td>
+                    <td>{{ $user->kelas->nama_kelas ?? 'Tidak ada' }}</td>
+                    <td>
+                        @if ($user->foto)
+                        <img src="{{ asset($user->foto)}}" alt="User Photo" width="100" class="mt-2">
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('user.show', $user->id) }}" class="btn btn-warning mb-3">Detail</a>
                         |
@@ -39,7 +44,6 @@
                             onclick="return confirm('Apakah anda yakin ingin menghapus user ini?')">Delete</button>
                         </form>
                     </td>
-                    <td><a href="{{ route('user.show', $user['id'])}}" class="btn btn-primary btn-sm">View</a></td>
                 </tr>
             @endforeach
         </tbody>

@@ -30,5 +30,15 @@
         <label for="foto">foto:</label><br>
         <input type="submit" name="submit" value="Submit">
     </form>
+
+    @if(session('success'))
+        <script>
+        Swal.fire({
+            title: "Good job!",
+            text: "{{ session('success') }}",
+            icon: "success",
+        });
+        </script>
+    @endif
 @endsection
     
