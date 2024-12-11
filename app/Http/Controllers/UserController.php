@@ -115,22 +115,15 @@ class UserController extends Controller
             'nama' => 'required|string|max:255',
             'kelas_id' => 'required|exists:kelas,id',
             'npm' =>'required|string|max:255',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto' => 'image|file|max:2048',
         ]); 
         
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
 
-            $fileName = time() . '_' . $foto->getClientOriginalName();
+            $fotoPath = time() . '_' . $foto->getClientOriginalName();
 
-            $foto->move(public_path('upload/img'), $fileName);
-
-            // Path relatif untuk disimpan ke database
-            $fotoPath = 'upload/img/' . $fileName;
-      
-        } else {
-            $fotoPath = null;
-        }
+            $foto->storeAs('uploads', $fotoPath);
 
         $this->userModel->create([
             'nama' => $request->input('nama'),
@@ -141,6 +134,7 @@ class UserController extends Controller
 
         return redirect()->to('/user')->with('success', 'User berhasil ditambahkan');
     }
+}
 
     public function show($id){
         $user = $this->userModel->getUser($id);
