@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->userModel->getUser();
+        $users = $this->userModel->with('kelas')->orderBy('id', 'asc')->get(); 
         
         if (!$users) {
             $users = [];
@@ -111,7 +111,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|string|max:255',
             'kelas_id' => 'required|exists:kelas,id',
             'npm' =>'required|string|max:255',
@@ -121,9 +121,16 @@ class UserController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
 
-            $fotoPath = time() . '_' . $foto->getClientOriginalName();
+            $fileName = time() . '_' . $foto->getClientOriginalName();
 
-            $foto->storeAs('uploads', $fotoPath);
+            $foto->move(public_path('upload/img'), $fileName);
+
+            // Path relatif untuk disimpan ke database
+            $fotoPath = 'upload/img/' . $fileName;
+
+        } else {
+            $fotoPath = null;
+        }
 
         $this->userModel->create([
             'nama' => $request->input('nama'),
