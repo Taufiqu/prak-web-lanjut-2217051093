@@ -123,7 +123,7 @@ class UserController extends Controller
 
             $fileName = time() . '_' . $foto->getClientOriginalName();
 
-            $foto->move(public_path('upload/img'), $fileName);
+            $foto->move(directory: public_path(path: 'upload/img'), name: $fileName);
 
             // Path relatif untuk disimpan ke database
             $fotoPath = 'upload/img/' . $fileName;
